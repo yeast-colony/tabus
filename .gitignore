@@ -1,0 +1,9 @@
+#development
+.dev/*.sublime-workspace
+
+#python temporary
+*.pyc
+*.pyo
+
+#db
+db.sqlite3
