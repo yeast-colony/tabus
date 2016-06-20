@@ -73,14 +73,21 @@ def search(tags, username):
 	else: 
 		userDB = userDB[0]
 
-	tagsDB = []
+	tagDBs = []
 	for tag in tags:
-		tagsDB.append(Tag.objects.filter(tag=tag, 
+		tagDBs.append(Tag.objects.filter(tag=tag, 
 			owner=userDB.id)[0].id)
 
 
-	tagSentenceDB = (
-		TagSentence.objects.filter(tag__in = tagsDB).values('sentence'))
-	_tagSentenceDB = tagSentenceDB.annotate(numSentence = Count('sentence'))
-
-	import ipdb; ipdb.set_trace()
+	tagSentenceDBs = (
+		TagSentence.objects.filter(tag__in = tagDBs).values('sentence'))
+	
+	sentences=[]
+	_tagSentenceDBs = tagSentenceDBs.annotate(numSentence = Count('sentence'))
+	
+	for _tagSentenceDB in _tagSentenceDBs:
+		if _tagSentenceDB["numSentence"] == len(tagDBs):
+			sentences.append( 
+				Sentence.objects.filter(id=_tagSentenceDB["sentence"])[0]
+			)
+	return [ str(sentence) for sentence in sentences ]

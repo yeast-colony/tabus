@@ -7,7 +7,7 @@ test__entries = [
 	[	
 		"Agatka",
 		"Jaka klawiature kupic?",
-		["wazne", "klawiatura", "kupno"],
+		["klawiatura", "kupno"],
 	],
 	[
 		"Agatka",
@@ -27,3 +27,8 @@ for entry in test__entries:
 	if not user in test__user:
 		test__user.append(entry[0])
 test__user = test__user.sort()
+
+test__sentenes__agata_wazne = [
+	"Piekne drzewa owocowe naszły na się..."
+	"Czym sa drzewa? Pieknem?",
+]

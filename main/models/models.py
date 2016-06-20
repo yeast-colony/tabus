@@ -14,7 +14,7 @@ class Sentence(models.Model):
 	owner = models.ForeignKey(User, on_delete=models.CASCADE)
 	content = models.CharField(max_length = 250)
 	def __str__(self):
-		return str(self.content + " " + self.owner.username )
+		return str(self.content)
 
 class Tag(models.Model):
 	tag = models.CharField(max_length = 20)
