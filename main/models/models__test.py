@@ -44,7 +44,7 @@ class TestCase__models(TestCase):
 
 		#(2)
 		self.assertEqual(
-			modelsOps.search(["wazne"], "Agatka"),
+			modelsOps.search(["wazne"], "Agata"),
 			testingUtils.test__sentenes__agata_wazne
 		)
 

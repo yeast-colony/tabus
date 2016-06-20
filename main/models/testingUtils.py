@@ -5,17 +5,17 @@ test__entries = [
 		["analogia", "misja"]
 	],
 	[	
-		"Agatka",
+		"Agata",
 		"Jaka klawiature kupic?",
 		["klawiatura", "kupno"],
 	],
 	[
-		"Agatka",
+		"Agata",
 		"Piekne drzewa owocowe naszły na się...",
 		["wazne", "pieknedrzewa", "owadynocne"],
 	],
 	[
-		"Agatka",
+		"Agata",
 		"Czym sa drzewa? Pieknem?",
 		["wazne", "pieknedrzewa"]
 	]
