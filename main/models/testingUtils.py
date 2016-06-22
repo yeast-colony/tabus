@@ -1,34 +1,37 @@
+test__users = [ "Agata", "Szymon", "Borsuk", "Dzik"]
+test__sentences = ["Co się dzieje w lesie po zmroku?", "Czy należy się bać dzika.", "Czerwcowe motyle"]
+
 test__entries = [
 	[
-		"Szymon",
+		test__users[1],
 		"Analogiczna misja tego roku?",
 		["analogia", "misja"]
 	],
 	[	
-		"Agata",
+		test__users[0],
 		"Jaka klawiature kupic?",
 		["klawiatura", "kupno"],
 	],
 	[
-		"Agata",
+		test__users[0],
 		"Piekne drzewa owocowe naszły na się...",
 		["wazne", "pieknedrzewa", "owadynocne"],
 	],
 	[
-		"Agata",
+		test__users[0],
 		"Czym sa drzewa? Pieknem?",
-		["wazne", "pieknedrzewa"]
+		["wazne", "pieknedrzewa", "tenjestinny"]
 	]
 ]
 
-test__user = []
+test__userFromEntries = []
 for entry in test__entries:
 	user = entry[0]
-	if not user in test__user:
-		test__user.append(entry[0])
-test__user = test__user.sort()
+	if user not in test__userFromEntries:
+		test__userFromEntries.append(entry[0])
 
 test__sentenes__agata_wazne = [
-	"Piekne drzewa owocowe naszły na się..."
-	"Czym sa drzewa? Pieknem?",
-]
+	"Piekne drzewa owocowe naszły na się...",
+	"Czym sa drzewa? Pieknem?"
+]			
+			

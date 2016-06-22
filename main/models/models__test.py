@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from django.utils import timezone
 from django.test import TestCase
 
@@ -9,43 +11,61 @@ import main.models.testingUtils as testingUtils
 
 
 class TestCase__models(TestCase):
-	def setUp(self):
-		modelsOps.addEntries(testingUtils.test__entries)
 
-	def tearDown(self):
-		pass
+    def setUp(self):
+        modelsOps.addEntries(testingUtils.test__entries)
 
-	def test__addEntry(self):
-		self.assertTrue (len(User.objects.all()) == 2 )
-		self.assertTrue (len(Sentence.objects.all()) == 4 )
+    def tearDown(self):
+        pass
 
-		# @TODO add more tests
+    def test__addEntry(self):
+        self.assertTrue(len(User.objects.all()) == 2)
+        self.assertTrue(len(Sentence.objects.all()) == 4)
+        self.assertEqual([str(db.username) for db in
+                         User.objects.all()],
+                         testingUtils.test__userFromEntries)
 
-		# self.assertEqual(
-		# 	[ str(db) for db in User.objects.all()], 
-		# 	test__usern)
+    def test__addUser(self):
+        for user in testingUtils.test__users:
+            modelsOps.addUser(user)
+        self.assertTrue(len(User.objects.filter(username__in=testingUtils.test__users)))
+        for user in testingUtils.test__users:  # doing it twice to check if they are unique
+            modelsOps.addUser(user)
+        self.assertTrue(len(User.objects.filter(username__in=testingUtils.test__users)))
 
-	def test__search(self):
-		"""
+    def test__addSentence(self):
+        userDB = User.objects.get(username=testingUtils.test__users[0])
+        for sentence in testingUtils.test__sentences:
+            modelsOps.addSentence(sentence, userDB,
+                                  adding_date=timezone.now())
+        self.assertTrue(len(Sentence.objects.filter(content__in=testingUtils.test__sentences)))
+        for sentence in testingUtils.test__sentences:
+            modelsOps.addSentence(sentence, userDB,
+                                  adding_date=timezone.now())
+        self.assertTrue(len(Sentence.objects.filter(content__in=testingUtils.test__sentences)))
+
+    def test__search(self):
+        """
 		1) test if finds sentences as providing
 			all tags while adding the sentence
 		2) check if giving to search only one tag
 			which match many sentences, many
 			sentences will be returned
+		3)** what we are expecting when user doesn't have any sentences
 		"""
 
-		#(1)
-		for test__entry in testingUtils.test__entries:
-			username, sentence, tags = test__entry
-			self.assertEqual(
-				modelsOps.search(tags, username),
-				[sentence]
-			)
+    # (1)
 
-		#(2)
-		self.assertEqual(
-			modelsOps.search(["wazne"], "Agata"),
-			testingUtils.test__sentenes__agata_wazne
-		)
+        for test__entry in testingUtils.test__entries:
+            (username, sentence, tags) = test__entry
+            self.assertTrue(sentence in modelsOps.search(tags,
+                            username))
+
+    # (2)
+
+        self.assertEqual(modelsOps.search(['wazne'], 'Agata'),
+                         testingUtils.test__sentenes__agata_wazne)
 
 
+
+			
