@@ -1,1 +1,4 @@
-[ ] @Add constraint for DB
+[ ] @Consider blank option in DB
+[ ] @Adding existing tag, user or sentences raising an exception
+[ ] @Adding the same sentence twice on different days/months should be possible or at least updating existing sentence
+[ ] @geting non existing element from the database exception

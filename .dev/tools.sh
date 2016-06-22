@@ -26,5 +26,5 @@ function tabus__cleanMigrationsAndDB {
 }
 
 function tabus__testsrun {
-	python3 manage.py test --pattern *__test.py -v 3
+	python3 -Wall manage.py test --pattern *__test.py -v 3
 }
