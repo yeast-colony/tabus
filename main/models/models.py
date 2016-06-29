@@ -1,3 +1,6 @@
+"""
+"""
+
 from __future__ import unicode_literals
 
 from django.db import models
@@ -30,7 +33,9 @@ class Tag(models.Model):
 
 class TagSentence(models.Model):
 	tag = models.ForeignKey(Tag, on_delete=models.CASCADE, db_index = True)
-	sentence = models.ForeignKey(Sentence, on_delete=models.CASCADE, db_index = True)
+	sentence = (
+		models.ForeignKey(Sentence, 
+			on_delete=models.CASCADE, db_index = True))
 
 	class Meta:
 	    unique_together = (('tag', 'sentence',),)

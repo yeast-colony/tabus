@@ -11,7 +11,6 @@ import main.models.testingUtils as testingUtils
 
 
 class TestCase__models(TestCase):
-
     def setUp(self):
         modelsOps.addEntries(testingUtils.test__entries)
 

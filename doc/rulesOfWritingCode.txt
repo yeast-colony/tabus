@@ -1,0 +1,13 @@
+1. Commenting code.
+	Comment that code which is not obvious;
+	if you dont have enough time or would it be
+	too laborious comment just how to use it:
+		@Usage
+		e.g. draw("sciana", ["zolty", "zielony"])
+		e.g. my_git_diff HEAD
+2. Write good commit message for commits which do a lot.
+	First line should contain short description.
+	In next lines you can put more.
+	You dont need to tell which files you modified ->
+		that can be simply checked by git commands,
+	tell what you did.
