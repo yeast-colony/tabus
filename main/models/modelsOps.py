@@ -6,17 +6,17 @@ from main.models.models import *
 
 def addEntry(user, sentence, tags):
     """
-		@Description
-			add to DB needed objects to keep all data
-			from entry;
-		@Args
-			@user <- String
-			@tags <- array of String
-			@sentence <- String
-		@Returns
-			@boolean value indicating if action perform 
-				with success
-	"""
+        @Description
+            add to DB needed objects to keep all data
+            from entry;
+        @Args
+            @user <- String
+            @tags <- array of String
+            @sentence <- String
+        @Returns
+            @boolean value indicating if action perform 
+                with success
+    """
 
     addUser(user)
     userDB = User.objects.get(username=user)
@@ -82,15 +82,15 @@ default_tag = '__no_tag__'
 
 def search(tags, username):
     """
-		@Description
-			search for sentences marked with 
-			@tags and created by @username
-		@Args
-			@tags <- list of string
-			@username <- string
-		@Returns
-			@list of string representation of sentences
-	"""
+        @Description
+            search for sentences marked with 
+            @tags and created by @username
+        @Args
+            @tags <- list of string
+            @username <- string
+        @Returns
+            @list of string representation of sentences
+    """
 
     userDB = User.objects.get(username=username)
     if userDB is None:
